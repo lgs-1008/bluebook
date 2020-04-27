@@ -18,7 +18,7 @@ class BookmarkCreateView(LoginRequiredMixin, CreateView):
     fields = ['title', 'url']
     success_url = reverse_lazy('bookmark:index')
 
-    def from_valid(self, form):
+    def form_valid(self, form):
         form.instance.owner = self.request.user
         return super().form_valid(form)
 
