@@ -34,5 +34,5 @@ class Post(models.Model):
         return self.get_next_by_modify_dt()
 
     def save(self, *args, **kwargs):
-        slef.slug = slugify(self.title, allow_unicode=True)
+        self.slug = slugify(self.title, allow_unicode=True)
         super().save(*args, **kwargs)

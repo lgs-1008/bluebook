@@ -1,12 +1,17 @@
 {% extends "base.html" %}
-
 {% block title %}bookmark_detail.html{% endblock %}
-
 {% block content %}
+
   <h1>{{ object.title }}</h1>
+  <h6>Writer : {{ bookmark.owner }}</h6>
 
   <ul>
     <li>URL: <a href="{{ object.url }}">{{ object.url }}</a></li>
   </ul>
+
+  {% if bookmark.owner == request.user %}
+    <a href="{% url 'bookmark:update' bookmark.id %}">Update</a> |
+    <a href="{% url 'bookmark:delete' bookmark.id %}">Delete</a>
+  {% endif %}
 
 {% endblock %}
